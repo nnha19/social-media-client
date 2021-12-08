@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react";
 
 const Users = ({ users }) => {
+  console.log("User page gets rendered");
+  console.log(users);
   const usersList = users.map((u) => {
     return <div key={u._id}>{u.username}</div>;
   });
@@ -18,6 +20,7 @@ export const getStaticProps = async () => {
     url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/users`,
     method: "GET",
   });
+  console.log(resp.data);
 
   return {
     props: { users: resp.data },

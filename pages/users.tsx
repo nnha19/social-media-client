@@ -15,7 +15,7 @@ const Users = ({ users }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const resp = await axios({
     url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/users`,
     method: "GET",

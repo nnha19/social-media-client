@@ -15,15 +15,15 @@ const Users = ({ users }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const resp = await axios({
     url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/users`,
     method: "GET",
   });
-  console.log(resp.data);
 
   return {
     props: { users: resp.data },
+    revalidate: 10,
   };
 };
 
